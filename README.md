@@ -1,102 +1,43 @@
-# CrossValQA Pipeline
+## License
 
-A framework for generating high-quality, citation-grounded question-answer pairs from scientific literature via information isolation and bidirectional cross-validation.
+- **Dataset (MutQA):** [Creative Commons Attribution 4.0 International (CC-BY-4.0)](https://creativecommons.org/licenses/by/4.0/). Use, redistribution, modification, and commercial use are permitted with attribution.
+- **Pipeline code (CrossValQA):** [MIT License](LICENSE).
 
-## Pipeline Architecture
+Source PubMed content remains subject to the licenses and terms of its respective publishers. MutQA references source articles by PMID and does not redistribute full-text source content.
 
-```
-Phase 0 (Gemini)     Phase 1 (Gemini)     Phase 2 (DeepSeek)     Phase 3 (Llama)      UniProt Grounding
-Entity Extraction  → QA Generation      → Independent Answers  → Cross-Validation   → Gene-to-UniProt
-                     Q, A₁, R₁             A₂, R₂                R₂→A₁? R₁→A₂?       Mapping
-```
+## Citation
 
-### Information Isolation
+If you use MutQA or the CrossValQA pipeline in your research, please cite:
 
-The core innovation is that **LLM₂ never sees LLM₁'s answer or rationale**. Each model answers independently from the source text, and a third model cross-validates by checking whether each rationale supports the other's answer. QA pairs where both directions validate are retained; the rest are flagged as potential hallucinations.
-
-## Directory Structure
-
-```
-claim_extractor/          Core pipeline (Phases 0-3)
-  phase_0/                  Entity extraction and verification
-  phase_1/                  QA generation (Gemini)
-  phase_2/                  Independent answer generation (DeepSeek)
-  phase_3/                  Cross-validation judge (Llama)
-  proteomics/               Proteomics domain adaptation
-  docs/                     Pipeline documentation
-
-uniprot/                  Gene-to-UniProt grounding
-  scripts/                  Grounding pipeline scripts
+```bibtex
+@inproceedings{mutqa2026,
+  title     = {MutQA: A Citation-Grounded Question Answering Benchmark for Mutation-Aware Text Models},
+  author    = {ANONYMIZED},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS), Evaluations and Datasets Track},
+  year      = {2026}
+}
 ```
 
-## Final Dataset
+## Datasheet
 
-```
-uniprot/output/m2tqa_gene_corrected.jsonl
-```
+Full Gebru-format datasheet is available at [`DATASHEET.md`](DATASHEET.md). It documents motivation, composition, collection process, preprocessing, intended uses, distribution, and maintenance.
 
-### Record Fields
+## Croissant Metadata
 
-| Field | Description |
-|---|---|
-| `pmid` | PubMed article ID |
-| `mutation` | Variant identifier (HGVS notation) |
-| `question` | Generated question |
-| `question_type` | Category (function, pathogenicity, disease, etc.) |
-| `phase1_answer` | Phase 1 answer (Gemini) |
-| `phase1_rationale` | Phase 1 rationale with sentence citations |
-| `phase2_answer` | Phase 2 answer (DeepSeek) |
-| `phase2_rationale` | Phase 2 rationale with sentence citations |
-| `r1_supports_a2` | Cross-validation: does R₁ support A₂? |
-| `r2_supports_a1` | Cross-validation: does R₂ support A₁? |
-| `r1_a2_reasoning` | Judge reasoning for R₁→A₂ |
-| `r2_a1_reasoning` | Judge reasoning for R₂→A₁ |
-| `cited_sentences` | Extracted evidence sentences from source article |
-| `corrected_gene` | Gene symbol (after UniProt grounding) |
-| `gene_confidence` | Confidence tier (gold, high, low) |
-| `uniprot_primary` | UniProt accession |
-| `grounding` | Cross-validation result |
+The dataset is documented with a [Croissant 1.0](http://mlcommons.org/croissant/) metadata file including [Responsible AI (RAI) extension](http://mlcommons.org/croissant/RAI/) fields. The Croissant file is available at [`croissant.json`](croissant.json) and on the [HuggingFace dataset page](https://huggingface.co/datasets/<HF_ORG>/MutQA).
 
-## Models Used
+## Maintenance
 
-| Phase | Model | Purpose |
-|---|---|---|
-| Phase 0 | Gemini 2.5 Flash | Entity verification |
-| Phase 1 | Gemini 2.5 Flash | QA generation |
-| Phase 2 | DeepSeek Chat | Independent answer generation |
-| Phase 3 | Llama 3.1 8B Instruct | Cross-validation judge |
-| Grounding | (rule-based) | Gene-to-UniProt mapping |
+MutQA is maintained by the originating research lab. The v1.0.0 release described in the accompanying paper is the canonical reproduction reference and will remain available indefinitely on HuggingFace. Errata, version changes, and breaking changes will be documented in [`CHANGELOG.md`](CHANGELOG.md). Superseded versions are retained for reproducibility.
 
-## Proteomics Adaptation
+**Reporting issues.** Please file errors, requested corrections, or feature requests via [GitHub Issues](https://github.com/<ORG>/<REPO>/issues). We commit to responding to legitimate issues within 30 days.
 
-The pipeline generalizes to other scientific domains. A proteomics adaptation (`claim_extractor/proteomics/`) was built as a proof of concept, with entity extraction adapted for protein names and synonyms.
+**Contributions.** Pull requests are welcome for pipeline improvements. For dataset extensions (including applications of CrossValQA to new domains), please open an issue first to discuss scope.
 
-## Running the Pipeline
+## Author Responsibility
 
-```bash
-export OPENROUTER_API_KEY="your-key"
+The authors confirm that, to the best of our knowledge, MutQA does not violate the rights of original PubMed content owners. Derived QA pairs are released as research-use commentary under CC-BY-4.0 with full source attribution preserved via PMID. The authors bear responsibility for the dataset and any rights violations identified post-release; please report concerns via GitHub Issues.
 
-cd claim_extractor
+## Intended Use and Out-of-Scope Use
 
-# Phase 0: Extract and verify mutations
-python phase_0/batch_extractor.py
-
-# Phase 1: Generate QA pairs
-python phase_1/phase1_generator_qa.py --workers 50
-
-# Phase 2: Independent answers
-python phase_2/phase2_generator.py --workers 50
-
-# Phase 3: Cross-validate
-python phase_3/phase3_judge.py --workers 50
-
-# UniProt grounding
-python ../uniprot/scripts/master_grounding_pipeline.py
-```
-
-## Environment
-
-- Python 3.10+
-- Key dependencies: pandas, tqdm, aiohttp, dotenv
-- LLM API: OpenRouter
-- Platform: Linux
+MutQA is intended for **research evaluation** of mutation-aware text models. See [`DATASHEET.md`](DATASHEET.md) for a full discussion of intended use cases (UC1-UC5) and limitations. The dataset **must not be used** for clinical outcome prediction, variant interpretation in patient care, drug response prediction, or any application that conflates literature-grounded model performance with biological or clinical correctness.
