@@ -1,0 +1,12 @@
+{
+  "total_articles": 86317,
+  "articles_with_verified_mutations": 33901,
+  "total_verified_mutations": 234148,
+  "total_unverified_by_llm": 29954,
+  "total_filtered_gene_names": 150859,
+  "total_just_mentioned": 1115275,
+  "total_errors": 0,
+  "failed_batches": 1147,
+  "processing_time_seconds": 7771.48939037323,
+  "model": "google/gemini-2.5-flash-lite"
+}

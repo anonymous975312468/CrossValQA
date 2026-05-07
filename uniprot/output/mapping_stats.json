@@ -1,0 +1,9 @@
+{
+  "total_records": 473243,
+  "human_records": 294444,
+  "with_gene_id": 294444,
+  "mapped_to_uniprot": 287228,
+  "unique_genes_mapped": 3558,
+  "unique_uniprot_ids": 7458,
+  "multiple_uniprot_matches": 176017
+}

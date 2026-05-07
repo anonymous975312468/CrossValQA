@@ -1,0 +1,20 @@
+# CrossValQA Pipeline Dependencies
+# Install: pip install -r requirements.txt
+
+# Core pipeline (Phases 0-4)
+aiohttp>=3.9
+requests>=2.31
+tqdm>=4.66
+python-dotenv>=0.19
+numpy>=1.24
+pandas>=2.0
+
+# Visualization & analysis
+matplotlib>=3.7
+openpyxl>=3.1
+
+# LLM token counting
+tiktoken>=0.5
+
+# RAG experiments (optional)
+chromadb>=1.0

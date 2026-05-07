@@ -1,0 +1,138 @@
+================================================================================
+EXAMPLE 1: phase2_not_answerable -> ungrounded
+================================================================================
+{
+  "pmid": "31514951",
+  "mutation": "p.Arg606Trp",
+  "question": "What electrocardiographic findings are associated with the p.Arg606Trp mutation in a carrier with a DCM phenotype?",
+  "question_type": "clinical",
+  "phase1_answer": "In a carrier with a DCM phenotype, the p.Arg606Trp mutation is associated with negative T waves in the anterolateral leads and fragmented QRS on ECG.",
+  "phase1_rationale": "The answer is directly supported by the statement that the DSP mutation (which includes p.Arg606Trp) is 'associated with negative T waves in the anterolateral leads and fragmented QRS on ECG'. Sentence 190 further elaborates on these findings, stating 'Note the negative T waves in the anterolateral leads and the fragmented QRS'.",
+  "phase1_evidence_ids": [
+    190
+  ],
+  "phase2_answer": "The context does not provide specific electrocardiographic findings associated with the p.Arg606Trp mutation in a carrier with a DCM phenotype.",
+  "phase2_rationale": "The context discusses various aspects of DCM and related mutations but does not specify electrocardiographic findings for the p.Arg606Trp mutation [184-194].",
+  "phase2_evidence_ids": [
+    184,
+    185,
+    186,
+    187,
+    188,
+    190,
+    191,
+    194
+  ],
+  "phase2_confidence": "high",
+  "phase2_answerable": false,
+  "context_sentence_ids": [
+    184,
+    185,
+    186,
+    187,
+    188,
+    190,
+    191,
+    194
+  ],
+  "mutation_sentence_ids": [
+    189
+  ],
+  "original_prefilter_reason": "phase2_not_answerable",
+  "r2_supports_a1": false,
+  "r2_a1_reasoning": "The rationale does not specify electrocardiographic findings for the p.Arg606Trp mutation, which are mentioned in the answer.",
+  "r1_supports_a2": false,
+  "r1_a2_reasoning": "The rationale describes specific electrocardiographic findings associated with the p.Arg606Trp mutation, which contradicts the answer's claim that no specific findings are provided.",
+  "grounding": "ungrounded",
+  "recovery_source": "prefilter_bypass"
+}
+
+================================================================================
+EXAMPLE 2: phase2_not_answerable -> ungrounded
+================================================================================
+{
+  "pmid": "31514951",
+  "mutation": "p.Arg606Trp",
+  "question": "What is the clinical presentation of a carrier with the p.Arg606Trp mutation, specifically regarding their ECG findings?",
+  "question_type": "clinical",
+  "phase1_answer": "A carrier with the p.Arg606Trp mutation presents with a DCM phenotype, and their ECG shows negative T waves in the anterolateral leads and fragmented QRS.",
+  "phase1_rationale": "The answer is derived from the core finding which states, 'This is a DSP mutation in a carrier with a DCM phenotype, associated with negative T waves in the anterolateral leads and fragmented QRS on ECG.' This sentence explicitly links the mutation, the DCM phenotype, and the specific ECG abnormalities.",
+  "phase1_evidence_ids": [
+    190
+  ],
+  "phase2_answer": "The context does not provide specific ECG findings for the p.Arg606Trp mutation.",
+  "phase2_rationale": "The context discusses ECG findings related to DSP mutations and general DCM phenotypes, but it does not mention p.Arg606Trp specifically.",
+  "phase2_evidence_ids": [
+    186,
+    187,
+    190,
+    191
+  ],
+  "phase2_confidence": "high",
+  "phase2_answerable": false,
+  "context_sentence_ids": [
+    184,
+    185,
+    186,
+    187,
+    188,
+    190,
+    191,
+    194
+  ],
+  "mutation_sentence_ids": [
+    189
+  ],
+  "original_prefilter_reason": "phase2_not_answerable",
+  "r2_supports_a1": false,
+  "r2_a1_reasoning": "The rationale does not mention p.Arg606Trp specifically, so it does not provide evidence for the claim in the answer.",
+  "r1_supports_a2": false,
+  "r1_a2_reasoning": "The rationale describes a different mutation (DSP) and ECG findings (negative T waves in the anterolateral leads and fragmented QRS) that are associated with a DCM phenotype, but does not provide information about the p.Arg606Trp mutation.",
+  "grounding": "ungrounded",
+  "recovery_source": "prefilter_bypass"
+}
+
+================================================================================
+EXAMPLE 3: phase2_not_answerable -> cross-grounded
+================================================================================
+{
+  "pmid": "24728327",
+  "mutation": "p.Tyr1769Cys",
+  "question": "Is the p.Tyr1769Cys mutation associated with any specific cancer types based on the provided evidence?",
+  "question_type": "disease",
+  "phase1_answer": "The provided evidence does not specify any particular cancer types associated with the p.Tyr1769Cys mutation. It only mentions that variants were observed in a cancer-gene context.",
+  "phase1_rationale": "The evidence sentence states 'In our cohort, we observed 4 missense mutations in the BRCT domain, c.4956G.A (p.Met1652Ile), c.5306A.G (p.Tyr1769Cys), c.5411T.A (p.Va- Figure 3. Number of cancer-gene variants per individual by ancestry.' While this mentions the mutation in the context of cancer-gene variants, it does not link p.Tyr1769Cys to a specific cancer type.",
+  "phase1_evidence_ids": [
+    187
+  ],
+  "phase2_answer": "The p.Tyr1769Cys mutation is observed in the BRCA1 BRCT domain, which is known to cluster cancer-associated mutations, but no specific cancer types are mentioned in the context.",
+  "phase2_rationale": "The p.Tyr1769Cys mutation is listed among missense mutations in the BRCA1 BRCT domain, where cancer-associated mutations tend to cluster [185, 187]. However, the context does not specify which cancer types are associated with this particular mutation.",
+  "phase2_evidence_ids": [
+    185,
+    187
+  ],
+  "phase2_confidence": "medium",
+  "phase2_answerable": false,
+  "context_sentence_ids": [
+    182,
+    183,
+    184,
+    185,
+    186,
+    187,
+    188,
+    189,
+    190,
+    192
+  ],
+  "mutation_sentence_ids": [
+    187
+  ],
+  "original_prefilter_reason": "phase2_not_answerable",
+  "r2_supports_a1": true,
+  "r2_a1_reasoning": "The rationale mentions that cancer-associated mutations tend to cluster in the BRCA1 BRCT domain, but it does not specify which cancer types are associated with the p.Tyr1769Cys mutation, which aligns with the answer's conclusion.",
+  "r1_supports_a2": true,
+  "r1_a2_reasoning": "The rationale mentions the mutation in the context of cancer-gene variants, but does not link it to a specific cancer type, which aligns with the answer's conclusion.",
+  "grounding": "cross-grounded",
+  "recovery_source": "prefilter_bypass"
+}

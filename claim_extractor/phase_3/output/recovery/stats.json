@@ -1,0 +1,18 @@
+{
+  "cross-grounded": 5839,
+  "grounded": 332,
+  "ungrounded": 22486,
+  "errors": 13,
+  "by_original_reason": {
+    "phase2_not_answerable": {
+      "cross-grounded": 5024,
+      "grounded": 322,
+      "ungrounded": 22408
+    },
+    "mutation_not_in_phase2_answer": {
+      "cross-grounded": 815,
+      "grounded": 10,
+      "ungrounded": 78
+    }
+  }
+}

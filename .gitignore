@@ -1,0 +1,99 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# Claude Code skill files
+.agents/
+.claude/
+
+# Smoke tests
+claim_extractor/phase_2/output/
+
+# Annotation files (xlsx, csv)
+*.xlsx
+*.csv
+
+# RAG experiments (abandoned)
+rag/
+
+# VEP (blocked, scripts kept in backup)
+vep/
+
+# Large data files (tracked separately / rebuildable)
+*.jsonl
+*.jsonl.gz
+*.json
+!**/config.json
+!**/stats.json
+!**/*_stats.json
+!**/skills-lock.json
+
+# Database outputs
+database/articles_*.json
+database/verified_mutations.json
+
+# VEP outputs
+vep/output/
+vep/input/
+
+# RAG experiment outputs
+rag/embedding/chroma_db/
+rag/data_prep/output/
+rag/generation/mcq_*/
+rag/evaluation/results/
+rag/evaluation/clinvar/*.jsonl
+rag/civicfact/output/
+rag/civicfact/cross_val_experiment/
+rag/civicfact/pilot/
+rag/*.log
+
+# Uniprot outputs
+uniprot/output/*.jsonl
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Large files that can be re-downloaded
+mappings/Homo_sapiens.gene_info
+
+# Annotation data (Excel files are small, keep them)
+# human_annotation/ — kept
+
+# PDFs
+*.pdf
+
+# Large CSV data files (re-downloadable or rebuildable)
+claim_extractor/mutadescribe/*.csv
+claim_extractor/mutadescribe/vep_input.txt
+
+# Human annotation data (kept locally, not in git)
+human_annotation/
+claim_extractor/human_annotation
+
+# Stale ChromaDB
+rag/chroma_db/
+
+# Large text logs
+claim_extractor/phase_0/verify_log.txt
+rag/embedding/embed_log.txt
+
+# ClinVar reference data (re-downloadable)
+rag/evaluation/clinvar/variant_summary.txt.gz
+rag/evaluation/clinvar/var_citations.txt
+
+# UniProt ID mappings (re-downloadable)
+uniprot/input/*.dat.gz
+
+# Large reference files

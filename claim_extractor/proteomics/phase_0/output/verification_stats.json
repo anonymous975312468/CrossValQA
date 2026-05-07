@@ -1,0 +1,11 @@
+{
+  "total_articles": 22,
+  "articles_with_verified_proteins": 10,
+  "total_verified_proteins": 71,
+  "verified_with_identifiers": 57,
+  "total_unverified_by_llm": 3,
+  "total_just_mentioned": 7,
+  "total_errors": 0,
+  "processing_time_seconds": 19.150407791137695,
+  "model": "google/gemini-2.0-flash-001"
+}
