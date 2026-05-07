@@ -53,7 +53,7 @@ GENE_INFO_FILE = MAPPINGS_DIR / "Homo_sapiens.gene_info"
 # ============================================================================
 
 UNIPROT_OUTPUT_DIR = PIPELINE_ROOT / "uniprot" / "output"
-FINAL_DATASET = UNIPROT_OUTPUT_DIR / "m2tqa_gene_corrected.jsonl"
+FINAL_DATASET = PIPELINE_ROOT / "NeurIPS" / "dataset" / "all.jsonl"  
 
 # ============================================================================
 # LLM DEFAULTS
