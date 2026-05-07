@@ -11,7 +11,7 @@ If you use MutQA or the CrossValQA pipeline in your research, please cite:
 
 ```bibtex
 @inproceedings{mutqa2026,
-  title     = {MutQA: A Citation-Grounded Question Answering Benchmark for Mutation-Aware Text Models},
+  title     = {MutQA: A Cross-Validated QA Dataset for Genetic Mutations},
   author    = {ANONYMIZED},
   booktitle = {Advances in Neural Information Processing Systems (NeurIPS), Evaluations and Datasets Track},
   year      = {2026}
