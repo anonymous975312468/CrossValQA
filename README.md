@@ -24,13 +24,13 @@ Full Gebru-format datasheet is available at [`DATASHEET.md`](DATASHEET.md). It d
 
 ## Croissant Metadata
 
-The dataset is documented with a [Croissant 1.0](http://mlcommons.org/croissant/) metadata file including [Responsible AI (RAI) extension](http://mlcommons.org/croissant/RAI/) fields. The Croissant file is available at [`croissant.json`](croissant.json) and on the [HuggingFace dataset page](https://huggingface.co/datasets/<HF_ORG>/MutQA).
+The dataset is documented with a [Croissant 1.0](http://mlcommons.org/croissant/) metadata file including [Responsible AI (RAI) extension](http://mlcommons.org/croissant/RAI/) fields. The Croissant file is available at [`croissant.json`](croissant.json) and on the [HuggingFace dataset page](https://huggingface.co/datasets/random987654321/MutQA).
 
 ## Maintenance
 
 MutQA is maintained by the originating research lab. The v1.0.0 release described in the accompanying paper is the canonical reproduction reference and will remain available indefinitely on HuggingFace. Errata, version changes, and breaking changes will be documented in [`CHANGELOG.md`](CHANGELOG.md). Superseded versions are retained for reproducibility.
 
-**Reporting issues.** Please file errors, requested corrections, or feature requests via [GitHub Issues](https://github.com/<ORG>/<REPO>/issues). We commit to responding to legitimate issues within 30 days.
+**Reporting issues.** Please file errors, requested corrections, or feature requests via [GitHub Issues](https://github.com/anonymous975312468/CrossValQA/issues). We commit to responding to legitimate issues within 30 days.
 
 **Contributions.** Pull requests are welcome for pipeline improvements. For dataset extensions (including applications of CrossValQA to new domains), please open an issue first to discuss scope.
 
